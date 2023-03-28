@@ -23,13 +23,13 @@ TO EXECUTE:
 
 ##
 Finally, in a terminal session open the configuration file in nano:
-'''sudo -u www-data nano /srv/www/wordpress/wp-config.php'''
+```sudo -u www-data nano /srv/www/wordpress/wp-config.php```
 
 ##
 
 ##
 Find the following:
-'''
+```
 define( 'AUTH_KEY',         'put your unique phrase here' );
 define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
 define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
@@ -38,7 +38,7 @@ define( 'AUTH_SALT',        'put your unique phrase here' );
 define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
 define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
-'''
+```
 Delete those lines (ctrl+k will delete a line each time you press the sequence). Then replace with the content of https://api.wordpress.org/secret-key/1.1/salt/. (This address is a randomiser that returns completely random keys each time it is opened.) This step is important to ensure that your site is not vulnerable to “known secrets” attacks.
 
 Save and close the configuration file by typing ctrl+x followed by y then enter
@@ -48,26 +48,26 @@ Save and close the configuration file by typing ctrl+x followed by y then enter
 
 
 ##SOME USEFUL COMMAND LINE COMMANDS:
-'''$ vagrant ssh'''
+```$ vagrant ssh```
 SSH into virtual machine.
 
-'''$ vagrant up'''
+```$ vagrant up```
 Start virtual machine.
 
-'''$ vagrant share'''
+```$ vagrant share```
 Share your virtual machine to the world via a temporary and unique url.
 
-'''$ vagrant halt'''
+```$ vagrant halt```
 Halt virtual machine.
 
-'''$ vagrant destroy'''
+```$ vagrant destroy```
 Destroy your virtual machine. The source code and the content of the data directory will remain unchanged. Only the VirtualBox machine instance will be destroyed. You can build your machine again with the 'vagrant up' command. This command is useful if you want to save disk space.
 Warning: this command will destroy your site databases. Backup them using drush sql-dump > db.sql for each site.
 
-'''$ vagrant provision'''
+```$ vagrant provision```
 Reconfigure the virtual machine after a source code change.
 
-'''$ vagrant reload'''
+```$ vagrant reload```
 Reload the virtual machine. Useful when you need to change network or synced folder settings.
 
 SOME USEFUL MYSQL COMMANDS:
@@ -97,14 +97,14 @@ sudo mysql -u root
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YOUR_PASSWORD_HERE';
 FLUSH PRIVILEGES;
 
-'''mysql -u root -p # and it works'''
+```mysql -u root -p # and it works```
 
 ##
 
 ## Adicionar permissão remota. ATENÇÃO: tem de ser a todos os remotos
-'''CREATE USER wordpress@192.168.3.5 IDENTIFIED BY 'wordpress';
+```CREATE USER wordpress@192.168.3.5 IDENTIFIED BY 'wordpress';
 GRANT ALL PRIVILEGES ON *.* TO wordpress@192.168.3.5;
-flush privileges;'''
+flush privileges;```
 
 
 hZQfY@u@RUm2r@WiHi
