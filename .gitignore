@@ -2,5 +2,5 @@ vagrant/wordpress
 .vagrant
 vagrant/.bash_history
 vagrant/.mysql_history
-vagrant/.sudo_as_admin_sucessful
+vagrant/.sudo_as_admin_successful
 vagrant/.viminfo
