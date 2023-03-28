@@ -5,29 +5,16 @@ Use Vagrant and VirtualBox to set up multiple VMs on a private network: one Apac
 Created by Rui Paiva on 28/03/2023
 
 
-## Instalação
+## Install
 *1 - vagrant up
-## Uso
+## Use
 
-## FAQS
-
-
-TO EXECUTE:
-- Make sure you have a VagrantMultiAdditionalFiles folder in this directory
-		that contains the form web page
-- ```vagrant up``` to create both WebExampleBox (apache) and DBExampleBox (mysql)
-- Should see WebExampleBox's web page in browser at 192.168.3.5
-- Can ```vagrant ssh``` into either VM
-		DBExampleBox default username = root, password = rootpass for mysql
 
 
 ##
 Finally, in a terminal session open the configuration file in nano:
 ```sudo -u www-data nano /srv/www/wordpress/wp-config.php```
 
-##
-
-##
 Find the following:
 ```
 define( 'AUTH_KEY',         'put your unique phrase here' );
@@ -47,50 +34,61 @@ Save and close the configuration file by typing ctrl+x followed by y then enter
 
 
 
-##SOME USEFUL COMMAND LINE COMMANDS:
+## SOME USEFUL COMMAND LINE COMMANDS:
+
+SSH into virtual machine.<br>
 ```$ vagrant ssh```
-SSH into virtual machine.
 
+Start virtual machine.<br>
 ```$ vagrant up```
-Start virtual machine.
 
+Share your virtual machine to the world via a temporary and unique url.<br>
 ```$ vagrant share```
-Share your virtual machine to the world via a temporary and unique url.
 
+Halt virtual machine.<br>
 ```$ vagrant halt```
-Halt virtual machine.
 
-```$ vagrant destroy```
 Destroy your virtual machine. The source code and the content of the data directory will remain unchanged. Only the VirtualBox machine instance will be destroyed. You can build your machine again with the 'vagrant up' command. This command is useful if you want to save disk space.
-Warning: this command will destroy your site databases. Backup them using drush sql-dump > db.sql for each site.
+Warning: this command will destroy your site databases. Backup them using drush sql-dump > db.sql for each site.<br>
+```$ vagrant destroy```
 
+Reconfigure the virtual machine after a source code change.<br>
 ```$ vagrant provision```
-Reconfigure the virtual machine after a source code change.
 
+Reload the virtual machine. Useful when you need to change network or synced folder settings.<br>
 ```$ vagrant reload```
-Reload the virtual machine. Useful when you need to change network or synced folder settings.
 
-SOME USEFUL MYSQL COMMANDS:
-- ```mysql -u username -p``` to connect to MySQL server
-		(default username = root, password = rootpass)
-- ```SHOW DATABASES;``` to list available databases
-- ```USE databasename;``` to change databases
-- ```CREATE DATABASE databasename;``` to create database 
-- ```DROP DATABASE databasename;``` to delete database
-- ```SHOW tables;``` to see available database tables
-- ```DESCRIBE tablename;``` to see overview of table (field, type, etc)
-- ```CREATE TABLE tablename (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, column1 TYPE, column2 TYPE,..., columnN TYPE);``` 
-    to create a table in the current database
-		- columnJ is the label of the column
-		- TYPE can be things like: VARCHAR(maxnumofchars), CHAR(1),
-			DATE
-- ```INSERT INTO 'tablename' ('id','column1val',...,'columnNval');``` to 
-		insert a row of info in the current database
-- ```SELECT * FROM tablename;``` to see the info in this table
-- ```DELETE from tablename where columnname=fieldtext;``` to delete a row
-		in this table where the column has this value
+Visit for more information: https://developer.hashicorp.com/vagrant/docs
 
-mysql -h localhost -u wordpress -p wordpress
+## SOME USEFUL MYSQL COMMANDS:
+to connect to MySQL server<br>
+```mysql -u username -p``` 
+		(default username = root, password = rootpass)<br><br>
+to list available databases<br>
+```SHOW DATABASES;``` <br><br>
+to change databases<br>
+```USE databasename;``` <br><br>
+to create database<br>
+```CREATE DATABASE databasename;```  <br><br>
+to delete database<br>
+```DROP DATABASE databasename;``` <br><br>
+to see available database tables<br>
+```SHOW tables;``` <br><br>
+to see overview of table (field, type, etc)<br>
+```DESCRIBE tablename;``` <br><br>
+    to create a table in the current database<br>
+		- columnJ is the label of the column<br>
+		- TYPE can be things like: VARCHAR(maxnumofchars), CHAR(1),<br>
+			DATE<br>
+```CREATE TABLE tablename (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, column1 TYPE, column2 TYPE,..., columnN TYPE);``` <br><br>
+to insert a row of info in the current database<br>
+```INSERT INTO 'tablename' ('id','column1val',...,'columnNval');``` <br><br>
+to see the info in this table<br>
+```SELECT * FROM tablename;``` <br><br>
+to delete a row	in this table where the column has this value<br>
+```DELETE from tablename where columnname=fieldtext;```<br><br> 
+
+```mysql -h localhost -u wordpress -p wordpress```
 
 ## alterar pw do root
 sudo mysql -u root
@@ -104,7 +102,8 @@ FLUSH PRIVILEGES;
 ## Adicionar permissão remota. ATENÇÃO: tem de ser a todos os remotos
 ```CREATE USER wordpress@192.168.3.5 IDENTIFIED BY 'wordpress';
 GRANT ALL PRIVILEGES ON *.* TO wordpress@192.168.3.5;
-flush privileges;```
-
+flush privileges;
+```
+## FAQS
 
 hZQfY@u@RUm2r@WiHi
